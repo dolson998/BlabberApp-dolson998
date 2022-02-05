@@ -1,5 +1,5 @@
 ﻿namespace Domain;
-public class User
+public class User : IEntity
 {
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
@@ -9,10 +9,16 @@ public class User
     public string? FullNameLastFirst { get { 
         return LastName + ", " + FirstName;
         }}
-    //int? Age { get; set; }
-    public string? Id { get; set; }
-    public string? Email { get; set; }
-    public string? Password { get; set; }
+
+    public DateTime CreatedDttm { get; }
+
+    private Guid? Id;
+
+    public User()
+    {
+        this.Id = Guid.NewGuid();
+        this.CreatedDttm = DateTime.UtcNow;
+    }
 
     public string GetFullNameFirstLast()
     {
@@ -22,5 +28,10 @@ public class User
     public string GetFullNameLastFirst()
     {
         return LastName + ", " + FirstName;
+    }
+
+    public Guid? GetId()
+    {
+        return Id;
     }
 }

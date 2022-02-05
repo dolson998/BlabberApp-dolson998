@@ -1,12 +1,18 @@
 ﻿namespace Domain;
 
-public class Blab
+public class Blab : IEntity
 {
-    public string? Id { get; set; }
-    public DateTime? Timestamp { get; set; }
-    public string? Message { get; set; }
-    public string? MediaReference { get; set; }
-    public string? UserReference { get; set; }
-    public string? HashtagReference { get; set; }
+    public string? Contetn { get; set; }
+    public DateTime CreatedDttm { get; }
+    private Guid? Id;
+    public Blab(string message, User user)
+    {
+        this.Id = Guid.NewGuid();
+        this.CreatedDttm = DateTime.UtcNow;
+    }
+    public Guid? GetId()
+    {
+        return Id;
+    }
 
 }

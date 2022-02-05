@@ -65,48 +65,5 @@ public class UserTest
         Assert.AreEqual(expectedResult, actualResult);
     }
 
-    [TestMethod]
-    public void TestGetId()
-    {
-        //Arrange
-        var expectedResult = "123abc";
-        var user = new User();
-        user.Id = "123abc";
-
-        //Act
-        var actualResult = user.Id;
-
-        //Assert
-        Assert.AreEqual(expectedResult, actualResult);
-    }
-
-    [TestMethod]
-    public void TestGetEmail()
-    {
-        //Arrange
-        var expectedResult = "jdoe@abc.com";
-        var user = new User();
-        user.Email = "jdoe@abc.com";
-
-        //Act
-        var acutalResult = user.Email;
-
-        //Assert
-        Assert.AreEqual(expectedResult, acutalResult);
-    }
-
-    [TestMethod]
-    public void TestGetPassword()
-    {
-        //Arrange
-        var expectedResult = "123abc!@#ABC";
-        var user = new User();
-        user.Password = "123abc!@#ABC";
-
-        //Act
-        var actualResult = user.Password;
-
-        //Assert
-        Assert.AreEqual(expectedResult, actualResult);
-    }
+    
 }

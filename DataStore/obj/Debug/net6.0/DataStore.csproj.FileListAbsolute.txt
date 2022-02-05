@@ -1,0 +1,15 @@
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\bin\Debug\net6.0\DataStore.deps.json
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\bin\Debug\net6.0\DataStore.dll
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\bin\Debug\net6.0\ref\DataStore.dll
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\bin\Debug\net6.0\DataStore.pdb
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\bin\Debug\net6.0\Domain.dll
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\bin\Debug\net6.0\Domain.pdb
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\DataStore.csproj.AssemblyReference.cache
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\DataStore.GeneratedMSBuildEditorConfig.editorconfig
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\DataStore.AssemblyInfoInputs.cache
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\DataStore.AssemblyInfo.cs
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\DataStore.csproj.CoreCompileInputs.cache
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\DataStore.csproj.CopyComplete
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\DataStore.dll
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\ref\DataStore.dll
+C:\CS4790Repo\BlabberApp-dolson998\DataStore\obj\Debug\net6.0\DataStore.pdb
