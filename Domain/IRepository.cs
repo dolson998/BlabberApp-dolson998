@@ -3,11 +3,10 @@
 public interface IRepository
 {
     // CRUD ~ AGED
-    void Add(IEntity entity);
-    void Edit(IEntity entity);
-    void Delete(IEntity entity);
-    IEntity GetByEntityId(Guid Id);
-    IEntity Get(IEntity entity);
-
-    IEnumerable <IEntity> List();
+    public void Add(IEntity entity);
+    public void Edit(IEntity entity);
+    public void Delete(IEntity entity);
+    public IEntity GetByEntityId(Guid Id);
+    public IEntity Get(IEntity entity);
+    public IEntity[] List();
 }
