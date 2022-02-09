@@ -6,10 +6,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class InMemRepository : IRepository
+public class InMemRepository : IRepository //, IBlabRepository, IUserRepository
 {
     public Int32? currentIndex { get; private set; }
     private ArrayList _buffer;
+
     public InMemRepository()
     {
         _buffer = new ArrayList();
@@ -20,7 +21,11 @@ public class InMemRepository : IRepository
         currentIndex = _buffer.Add(entity);
     }
 
-    //TODO public void EditById(Guid ID, IEntity entity)
+    /*public void EditById(Guid Id, IEntity newEntity)
+    {
+        if (Id == ) throw new NotFoundException("Entity not found.");
+    }*/
+
     public void Edit(IEntity entity)
     {
         // TODO find existing entity in the buffer.
@@ -29,8 +34,30 @@ public class InMemRepository : IRepository
         // TODO handle not existant entity in buffer.
         if (index == -1) throw new NotFoundException("Entity not found.");
 
-        // TODO handle existant entity in buffer.
+        //TODO validation of obj.
+        try
+        {
+            if (entity.GetType() == typeof(Blab))
+            {
+                Blab blab = (Blab)entity;
+                blab.Validate();
+            }
+
+            if (entity.GetType() == typeof(User))
+            {
+                User user = (User)entity;
+                user.Validate();
+            }
+        }
+        catch (NotFoundException)
+        {
+            throw new NotFoundException("Entity data is invalid.");
+        }
+
         
+        this._buffer[index] = entity;
+        // TODO handle existant entity in buffer.
+
     }
 
     public void Delete(IEntity entity)
@@ -43,7 +70,6 @@ public class InMemRepository : IRepository
 
         // TODO remove existant entity in buffer.
         _buffer.Remove(entity);
-        throw new NotImplementedException();
     }
 
     public IEntity Get(IEntity entity)
@@ -54,8 +80,15 @@ public class InMemRepository : IRepository
         // TODO handle not existant entity in buffer.
         if (index == -1) throw new NotFoundException("Entity not found.");
 
+        IEntity? returnEntity = (IEntity)_buffer[index];
+
+        if (returnEntity == null) 
+        {
+            throw new NotFoundException("Entity not found.");
+        }
+        return returnEntity;
         // TODO return found entity.
-        throw new NotImplementedException();
+
     }
 
     public IEntity GetByEntityId(Guid Id)

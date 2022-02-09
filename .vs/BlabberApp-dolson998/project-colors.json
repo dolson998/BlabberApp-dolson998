@@ -5,7 +5,27 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "9276e7e8-1092-4775-9fff-1dad29b4d0ab": {
+      "ProjectGuid": "9276e7e8-1092-4775-9fff-1dad29b4d0ab",
+      "DisplayName": "Domain",
+      "ColorIndex": 0
+    },
+    "e70b2d0d-774a-414a-a778-6c5652c0c15d": {
+      "ProjectGuid": "e70b2d0d-774a-414a-a778-6c5652c0c15d",
+      "DisplayName": "DomainTest",
+      "ColorIndex": 1
+    },
+    "e011bbf8-ad9d-4bc2-af67-0bac817d26e2": {
+      "ProjectGuid": "e011bbf8-ad9d-4bc2-af67-0bac817d26e2",
+      "DisplayName": "DataStore",
+      "ColorIndex": 2
+    },
+    "67d7c5e6-6aa2-4f23-9e33-88c4a46e1a1c": {
+      "ProjectGuid": "67d7c5e6-6aa2-4f23-9e33-88c4a46e1a1c",
+      "DisplayName": "DataStoreTest",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 0
+  "NextColorIndex": 4
 }

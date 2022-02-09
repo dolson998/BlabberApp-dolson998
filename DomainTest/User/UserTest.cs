@@ -1,5 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Domain; 
+using Domain;
+using Domain.Exceptions;
+using System;
 
 namespace DomainTest;
 
@@ -10,60 +12,191 @@ public class UserTest
     public void TestUserCreation()
     {
         //Arrange
-        var expectedResult = new User();
+        var expectedResult = new User("Foo", "Bar", "fbar@abc.com");
 
         //Act
-        var actualResult = new User();
+        var actualResult = new User("Foo", "Bar", "fbar@abc.com");
 
         //Assert
         Assert.IsInstanceOfType(actualResult, expectedResult.GetType());
     }
 
     [TestMethod]
-    public void TestGetFirstName()
+    public void TestGetId()
     {
-        //Arrange
-        var expectedResult = "Foo";
-        var user = new User();
-        user.FirstName = "Foo";
 
-        //Act
+        // Arrange
+        User user = new User("Foo", "Bar", "fbar@abc.com");
+        var expectedResult = typeof(User);
+
+        // Act
+        Guid? actualResult = user.GetId();
+
+        // Assert
+        Assert.AreNotEqual(actualResult, Guid.Empty);
+    }
+
+    [TestMethod]
+    public void TestFirstName()
+    {
+        // Arrange
+        var expectedResult = "Foo";
+        var user = new User("Foo", "Bar","fbar@abc.com");
+
+        // Act
         var actualResult = user.FirstName;
 
-        //Assert
+        // Assert
         Assert.AreEqual(expectedResult, actualResult);
     }
 
     [TestMethod]
-    public void TestGetLastName()
+    public void TestLastName()
     {
-        //Arrange
+        // Arrange
         var expectedResult = "Bar";
-        var user = new User();
-        user.LastName = "Bar";
+        var user = new User("Foo", "Bar", "fbar@abc.com");
 
-        //Act
+        // Act
         var actualResult = user.LastName;
 
-        //Assert
+        // Assert
         Assert.AreEqual(expectedResult, actualResult);
     }
 
     [TestMethod]
-    public void TestGetFullName()
+    public void TestFullName()
     {
-        //Arrange
+        // Arrange
         var expectedResult = "Foo Bar";
-        var user = new User();
-        user.FirstName = "Foo";
-        user.LastName = "Bar";
+        var user = new User("Foo", "Bar", "fbar@abc.com");
 
-        //Act
+        // Act
         var actualResult = user.FullName;
 
-        //Assert
+        // Assert
         Assert.AreEqual(expectedResult, actualResult);
     }
 
-    
+    [TestMethod]
+    public void TestFullNameLastFirst()
+    {
+        // Arrange
+        var expectedResult = "Bar, Foo";
+        var user = new User("Foo", "Bar", "fbar@abc.com");
+
+        // Act
+        var actualResult = user.FullNameLastFirst;
+
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult);
+    }
+
+    [TestMethod]
+    public void TestGetFullNameFirstLast()
+    {
+        // Arrange
+        var expectedResult = "Foo Bar";
+        var user = new User("Foo", "Bar", "fbar@abc.com");
+
+        // Act
+        var actualResult = user.GetFullNameFirstLast();
+
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult);
+    }
+
+    [TestMethod]
+    public void TestGetFullNameLastFirst()
+    {
+        // Arrange
+        var expectedResult = "Bar, Foo";
+        var user = new User("Foo", "Bar", "fbar@abc.com");
+
+        // Act
+        var actualResult = user.GetFullNameLastFirst();
+
+        // Assert
+        Assert.AreEqual(expectedResult, actualResult);
+    }
+
+    [TestMethod]
+    public void TestUserValidationSuccess()
+    {
+        // Arrange & Act
+        User actualResult = new User("Foo", "Bar", "fbar@abc.com");
+
+        // Assert
+        try
+        {
+            actualResult.Validate();
+        }
+        catch (NotFoundException)
+        {
+            Assert.Fail();
+        }
+    }
+
+    [TestMethod]
+    public void TestUserValidationFirstNameNull()
+    {
+        // Arrange
+        User actualResult = new User("Foo", "Bar", "fbar@abc.com");
+
+        // Act
+        actualResult.FirstName = null;
+
+        // Assert
+        try
+        {
+            actualResult.Validate();
+            Assert.Fail();
+        }
+        catch (NotFoundException)
+        {
+            
+        }
+    }
+
+    [TestMethod]
+    public void TestUserValidationLastNameNull()
+    {
+        // Arrange
+        User actualResult = new User("Foo", "Bar", "fbar@abc.com");
+
+        // Act
+        actualResult.LastName = null;
+
+        // Assert
+        try
+        {
+            actualResult.Validate();
+            Assert.Fail();
+        }
+        catch (NotFoundException)
+        {
+
+        }
+    }
+
+    [TestMethod]
+    public void TestUserValidationEmailNull()
+    {
+        // Arrange
+        User actualResult = new User("Foo", "Bar", "fbar@abc.com");
+
+        // Act
+        actualResult.Email = null;
+
+        // Assert
+        try
+        {
+            actualResult.Validate();
+            Assert.Fail();
+        }
+        catch (NotFoundException)
+        {
+
+        }
+    }
 }
